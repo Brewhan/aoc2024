@@ -60,7 +60,6 @@ pub fn task2(){
     right.sort();
 
     let mut right_freq_map= HashMap::new();
-    let mut left_freq: HashMap<&i32, &i32> = HashMap::new();
     let mut sim_score: Vec<i32> = Vec::new();
 
     //This could be part of the previous let but i really cant be bothered
@@ -70,11 +69,8 @@ pub fn task2(){
    }
 
    for l in left.iter(){
-   let left_occur = right_freq_map.get(l).unwrap_or(&0);
-   left_freq.insert(l,left_occur);
-   sim_score.push(l * left_occur);
+    sim_score.push(l * right_freq_map.get(l).unwrap_or(&0));
    }
-
 
    let total: i32 = sim_score.iter().sum();
    
