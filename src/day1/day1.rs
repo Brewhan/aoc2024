@@ -14,9 +14,8 @@ pub fn task1(){
         .collect();
 
     let (mut left, mut right): (Vec<i32>, Vec<i32>) = lines.into_iter()
-    .map(|item|(item[0], item[1])
-    
-    ).fold((Vec::new(), Vec::new()), |(mut l, mut r), (first, second)| {
+    .map(|item|(item[0], item[1]))
+    .fold((Vec::new(), Vec::new()), |(mut l, mut r), (first, second)| {
         l.push(first);
         r.push(second);
         (l,r)
@@ -40,7 +39,6 @@ pub fn task1(){
 pub fn task2(){
     let before = Instant::now();
     let contents = fs::read_to_string("inputs/input1.txt").expect("Expected file contents!");
-
 
     let lines: Vec<Vec<i32>> = contents.lines()
         .map(|line| line.split(',')
