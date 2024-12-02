@@ -47,9 +47,8 @@ pub fn task2(){
         .collect();
 
     let (mut left, mut right): (Vec<i32>, Vec<i32>) = lines.into_iter()
-    .map(|item|(item[0], item[1])
-    
-    ).fold((Vec::new(), Vec::new()), |(mut l, mut r), (first, second)| {
+    .map(|item|(item[0], item[1]))
+    .fold((Vec::new(), Vec::new()), |(mut l, mut r), (first, second)| {
         l.push(first);
         r.push(second);
         (l,r)
