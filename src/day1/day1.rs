@@ -4,7 +4,7 @@ use std::collections::HashMap;
 
 pub fn task1(){
     let before = Instant::now();
-    let contents = fs::read_to_string("src/day1/input1.txt").expect("Expected file contents!");
+    let contents = fs::read_to_string("src/inputs/input1.txt").expect("Expected file contents!");
     let mut diff: Vec<i32> = Vec::new();
 
     let lines: Vec<Vec<i32>> = contents.lines()
@@ -39,7 +39,7 @@ pub fn task1(){
 
 pub fn task2(){
     let before = Instant::now();
-    let contents = fs::read_to_string("src/day1/input1.txt").expect("Expected file contents!");
+    let contents = fs::read_to_string("src/inputs/input1.txt").expect("Expected file contents!");
 
 
     let lines: Vec<Vec<i32>> = contents.lines()
