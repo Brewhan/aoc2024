@@ -62,7 +62,6 @@ pub fn task2(){
     //This could be part of the previous let but i really cant be bothered
    for r in right.iter(){
     *right_freq_map.entry(r).or_insert(0) += 1;
-
    }
 
    for l in left.iter(){
