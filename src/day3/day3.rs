@@ -32,7 +32,8 @@ pub fn task2() {
     let contents = get_file_contents(file_path);
     let mut do_val = true;
     let mut total = 0;
-    let re = FancyRegex::new(r"(?:mul\((\d+),(\d+)\))|(?<dont>don't\(\))|(?<do>do\(\))").unwrap();    for mat in re.captures_iter(&contents) {
+    let re = FancyRegex::new(r"(?:mul\((\d+),(\d+)\))|(?<dont>don't\(\))|(?<do>do\(\))").unwrap();
+    for mat in re.captures_iter(&contents) {
         match mat {
             Ok(m) => {
                 let mut first: i32 = 0;
