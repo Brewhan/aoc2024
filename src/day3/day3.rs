@@ -1,9 +1,11 @@
 use crate::utils::utils::get_file_contents;
 use fancy_regex::Regex as FancyRegex;
 use regex::Regex;
+use std::time::Instant;
 
 
 pub fn task1(){
+    let before = Instant::now();
     let file_path = "inputs/input3.txt";
     let contents = get_file_contents(file_path);
 
@@ -20,11 +22,12 @@ pub fn task1(){
     
     let total: i32 = capture_map.iter().sum();
     println!("{:?}", total);
+    println!("Day 3 Task 1: Elapsed time: {:.2?}", before.elapsed());
 }
 
 
-pub fn task2() {
-    
+pub fn task2() {   
+    let before = Instant::now();  
     let file_path = "inputs/input3.txt";
     let contents = get_file_contents(file_path);
     let mut do_val = true;
@@ -54,4 +57,5 @@ pub fn task2() {
         }
     }
     println!("{}", total);
+    println!("Day 3 Task 2: Elapsed time: {:.2?}", before.elapsed());
 }
