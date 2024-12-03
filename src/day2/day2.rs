@@ -1,4 +1,3 @@
-use std::clone;
 use std::time::Instant;
 
 use crate::utils::utils::get_file_contents;
@@ -48,7 +47,7 @@ fn check_safety(line: &Vec<i32>) -> i32{
 
 pub fn task2() {
     let before = Instant::now();
-    let file_path = "inputs/input2.txt";
+    let file_path = "inputs/testinput2.txt";
     let contents = get_file_contents(file_path);
 
     let lines: Vec<Vec<i32>> = contents.lines()
