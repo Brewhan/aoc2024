@@ -23,7 +23,7 @@ pub fn task1(){
 }
 
 
-pub fn task3() {
+pub fn task2() {
     
     let file_path = "inputs/input3.txt";
     let contents = get_file_contents(file_path);
