@@ -32,17 +32,12 @@ fn check_safety(line: &Vec<i32>) -> i32{
     let mut unsafe_line = 0;
     for i in line.windows(2){
         let (cur, next) = (i[0], i[1]);
-
         if (cur.abs_diff(next)  ==  0 )|| (cur.abs_diff(next) > 3){
-            // println!("{} {} {} {:?}", cur, next, cur.abs_diff(next), line);
             unsafe_line+=1;
         } else if (cur < next) && !asc {
-            // println!("{} {} {} {:?}", cur, next, "!asc", line);
-
             unsafe_line+=1;
 
         } else if (cur > next) && asc {
-            // println!("{} {} {} {:?}", cur, next, "asc", line);
             unsafe_line+=1;
         }
             
