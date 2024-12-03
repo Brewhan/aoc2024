@@ -69,7 +69,7 @@ pub fn task2() {
         fn loop_over_line(line: Vec<i32>) -> i32{
             let mut unsafe_line_count = 0;
             let safety_score = check_safety(&line);
-            if safety_score > 0{;
+            if safety_score > 0{
                 unsafe_line_count+=1;
            }
             for l in 0..line.len() {
