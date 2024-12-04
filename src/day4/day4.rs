@@ -1,5 +1,4 @@
 use crate::utils::utils::get_file_contents;
-use regex::Regex;
 
 // use slice windows to capture 4 items
 
@@ -15,21 +14,78 @@ use regex::Regex;
 // look down + right
 
 pub fn task1(file_path: &str) {
-    let contents = get_file_contents(file_path);
     let mut total: i32 = 0;
-    let contents: Vec<String> = contents
-        .split("\r\n")
-        .map(|s| s.to_string())
-        .filter(|s| !s.trim().is_empty())
-        .collect();
+
+    let  contents = get_contents(file_path);
     traverse(contents.clone(), &mut total);
-    println!("Total: {}", total);
+    println!("Task 1 Total: {}", total);
+}
+
+
+pub fn task2(file_path: &str){
+    let  contents = get_contents(file_path);
+    let mut total: i32 = 0;
+    traverse_mas(contents, &mut total);
+    println!("Task 1 Total: {}", total);
+}
+
+
+fn traverse_mas(contents: Vec<String>, total: &mut i32){
+    
+    let mut matrix: Vec<Vec<char>> = contents.iter().map(|row| row.chars().collect()).collect();
+    matrix = add_padding(&matrix);
+    let rows = matrix.len();
+
+    for (index, value) in matrix.iter().enumerate() {
+        for (k, v) in value.iter().enumerate() {
+
+            if *v == 'A' {
+
+                if (value.len() - k >= 1) && (rows - index > 1) {
+                    if 
+                        (matrix[index - 1][k - 1] == 'M'
+                        && matrix[index - 1][k + 1] == 'M'
+                        && matrix[index + 1][k - 1] == 'S'
+                        && matrix[index + 1][k + 1] == 'S') ||
+
+                        (matrix[index - 1][k - 1] == 'S'
+                        && matrix[index - 1][k + 1] == 'S'
+                        && matrix[index + 1][k - 1] == 'M'
+                        && matrix[index + 1][k + 1] == 'M')||
+
+                        (matrix[index - 1][k - 1] == 'S'
+                        && matrix[index - 1][k + 1] == 'M'
+                        && matrix[index + 1][k - 1] == 'S'
+                        && matrix[index + 1][k + 1] == 'M')||
+
+                        (matrix[index - 1][k - 1] == 'M'
+                        && matrix[index - 1][k + 1] == 'S'
+                        && matrix[index + 1][k - 1] == 'M'
+                        && matrix[index + 1][k + 1] == 'S')
+
+                    {
+                        println!("{:?} {} {}", matrix[index][k], index, k, );
+                        *total += 1;
+                    }
+
+
+
+                }
+            }
+        }
+    }
+
+
+ 
+
 }
 
 fn traverse(contents: Vec<String>, total: &mut i32) {
+
+
     //Convert the Vec<String> to a matrix
     let mut matrix: Vec<Vec<char>> = contents.iter().map(|row| row.chars().collect()).collect();
-    matrix =add_padding(&matrix);
+    matrix = add_padding(&matrix);
     let rows = matrix.len();
 
     // println!("{:?}", rows);
@@ -133,6 +189,17 @@ fn traverse(contents: Vec<String>, total: &mut i32) {
         }
     }
     
+}
+
+fn get_contents(file_path: &str) -> Vec<String> {
+    let contents = get_file_contents(file_path);
+    let contents: Vec<String> = contents
+    .split("\r\n")
+    .map(|s| s.to_string())
+    .filter(|s| !s.trim().is_empty())
+    .collect();
+    return contents
+
 }
 
 fn add_padding(matrix: &Vec<Vec<char>>) -> Vec<Vec<char>> {
