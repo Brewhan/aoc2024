@@ -1,3 +1,5 @@
+use std::time::Instant;
+
 use crate::utils::utils::get_file_contents;
 
 // use slice windows to capture 4 items
@@ -14,19 +16,23 @@ use crate::utils::utils::get_file_contents;
 // look down + right
 
 pub fn task1(file_path: &str) {
+    let before = Instant::now();
     let mut total: i32 = 0;
 
     let  contents = get_contents(file_path);
     traverse(contents.clone(), &mut total);
-    println!("Task 1 Total: {}", total);
+    println!("{}", total);
+    println!("Day 4 Task 1: Elapsed time: {:.2?}", before.elapsed());
 }
 
 
 pub fn task2(file_path: &str){
+    let before = Instant::now();
     let  contents = get_contents(file_path);
     let mut total: i32 = 0;
     traverse_mas(contents, &mut total);
-    println!("Task 1 Total: {}", total);
+    println!("{}", total);
+    println!("Day 4 Task 2: Elapsed time: {:.2?}", before.elapsed());
 }
 
 
@@ -64,7 +70,6 @@ fn traverse_mas(contents: Vec<String>, total: &mut i32){
                         && matrix[index + 1][k + 1] == 'S')
 
                     {
-                        println!("{:?} {} {}", matrix[index][k], index, k, );
                         *total += 1;
                     }
 
